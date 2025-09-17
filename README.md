@@ -21,6 +21,7 @@ A ideia é simples: parar de “re-googlar” sempre os mesmos problemas e const
 
 ```
 /knowledge-base
+  /git                # Exemplos de uso do Git
   /snippets           # Exemplos de código e padrões reutilizáveis
   /lessons-learned    # Lições aprendidas em projetos reais
   /quick-reference    # Cheatsheets, configurações e atalhos
