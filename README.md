@@ -66,7 +66,7 @@ A ideia é simples: parar de “re-googlar” sempre os mesmos problemas e const
 ## 🛠 Ferramentas Recomendadas
 
 - **Markdown** para documentação (`.md`)
-- **Obsidian / Notion** (opcional) para visualização pessoal
+- **LogSeq** (opcional) para visualização pessoal
 - **GitHub Gists** para compartilhar snippets específicos
 - **Anki** para revisão espaçada de conceitos importantes
 
