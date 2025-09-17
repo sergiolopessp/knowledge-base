@@ -26,6 +26,7 @@ A ideia é simples: parar de “re-googlar” sempre os mesmos problemas e const
   /lessons-learned    # Lições aprendidas em projetos reais
   /quick-reference    # Cheatsheets, configurações e atalhos
   /architecture       # Decisões arquiteturais (ADR) e boas práticas
+  /security           # Exemplos de código e Tecnicas para Desenvolvimento de Software Seguro
 ```
 
 ### Exemplos de Conteúdo
