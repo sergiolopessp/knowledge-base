@@ -1,6 +1,6 @@
 # OAuth 2.0: passo a passo
 
-Esse documento explica de forma clara e estruturada como funciona o **OAuth 2.0** (RFC 6749), seus componentes, fluxos de autorização, uso de tokens, vantagens e cuidados de segurança. É complemento ideal ao material que você já tem sobre “OAuth vs JWT”.
+Esse documento explica de forma clara e estruturada como funciona o **OAuth 2.0** (RFC 6749), seus componentes, fluxos de autorização, uso de tokens, vantagens e cuidados de segurança.
 
 ---
 
