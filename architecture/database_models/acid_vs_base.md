@@ -70,7 +70,7 @@ Este documento resume os conceitos de **ACID** e **BASE** conforme apresentado n
 
 ## Integração prática
 
-Como engenheiro com experiência em cloud, Docker, Java, Go, C++:
+Como engenheiro com experiência:
 
 - Avaliar as garantias oferecidas pelo banco (RDBMS ou NoSQL) no contexto de contêineres ou clusters orquestrados (ex: Kubernetes) — latência de replicação, falhas de rede, etc.
 - Verificar suporte transacional (ACID) nos bancos NoSQL ou híbridos — por exemplo, algumas operações/módulos do MongoDB ou Spanner fornecem transações ACID.
