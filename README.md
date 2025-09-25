@@ -40,13 +40,14 @@ A ideia é simples: parar de “re-googlar” sempre os mesmos problemas e const
 
 ## 🚀 Como Contribuir
 
-1. **Crie uma branch** para suas alterações  
+1. Cada pessoa faz um fork do repo principal para sua própria conta.
+2. **Crie uma branch** para suas alterações  
    ```bash
    git checkout -b add-snippet-java-builder
    ```
-2. **Adicione seu conteúdo** em formato Markdown (`.md`)  
-3. **Organize na pasta correta** (`snippets`, `lessons-learned`, etc.)  
-4. **Abra um Pull Request** explicando:
+3. **Adicione seu conteúdo** em formato Markdown (`.md`)  
+4. **Organize na pasta correta** (`snippets`, `lessons-learned`, etc.)  
+5. **Abra um Pull Request** explicando:
    - O que você adicionou
    - Por que é útil
    - Como usar/testar (se aplicável)
