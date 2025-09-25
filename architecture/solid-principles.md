@@ -129,5 +129,6 @@ void printArea(const Shape& s) {
 
 - Artigo original: *Understanding the SOLID Principles: A Practical Guide for Better Code* ([dev.to](https://dev.to/aranka_maxilo_55bab8ad3c3/understanding-the-solid-principles-a-practical-guide-for-better-code-c7))  
 - “Clean Code”, Robert C. Martin  
+- "Desbravando SOLID", Alexandre Aquiles
 - Exemplos de SOLID em frameworks Java, Go, C++  
 - Exercícios / refatorações de código legado para aplicar SOLID  
