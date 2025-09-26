@@ -1,4 +1,4 @@
-# Understanding `static`, `final`, `super`, `super()`, `this()` e `this` em Java
+# Entendendo `static`, `final`, `super`, `super()`, `this()` e `this` em Java
 
 Este artigo é um resumo comentado do post “Understanding static, final, super, super(), this() and this” do **DEV Community**.  
 Ele aborda como essas palavras‑chave funcionam em Java, como usá-las corretamente, e exemplos práticos. ([dev.to](https://dev.to/masteringbackend/understanding-static-final-super-super-this-and-this-lco))
