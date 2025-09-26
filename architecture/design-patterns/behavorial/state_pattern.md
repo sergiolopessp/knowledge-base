@@ -2,28 +2,46 @@
 
 O Padrão State permite que um objeto altere seu comportamento quando seu estado interno muda, encapsulando estados como objetos distintos.
 
+## Sumário
+
+- [Padrão State](#padrão-state)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Estado](#estado)
+    - [Contexto](#contexto)
+    - [Estados Concretos](#estados-concretos)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Contexto**: Classe que mantém uma referência ao estado atual.
 - **Estado**: Interface que define o comportamento associado a um estado.
 - **Estados Concretos**: Classes que implementam comportamentos específicos para cada estado.
 
 ## Benefícios
+
 - Encapsula comportamentos específicos de cada estado.
 - Facilita adição de novos estados sem modificar o contexto.
 - Elimina condicionais complexas baseadas em estado.
 - Promove o princípio aberto/fechado.
 
 ## Contras
+
 - Aumenta o número de classes.
 - Pode ser desnecessário para sistemas com poucos estados.
 - Requer manutenção para novos estados.
 
 ## Quando Usar
+
 Use o padrão State quando você, como desenvolvedor, precisa gerenciar comportamentos que mudam com base no estado de um objeto em um sistema, como em um e-commerce onde um pedido pode estar em estados como "pendente", "pago" ou "enviado". Cada estado define ações específicas (ex.: cancelar é permitido apenas em "pendente").
 
 ## Exemplo em Java 21
 
 ### Estado
+
 Define a interface para ações baseadas no estado do pedido.
 
 ```java
@@ -34,6 +52,7 @@ public interface EstadoPedido {
 ```
 
 ### Contexto
+
 Classe que mantém o estado atual do pedido.
 
 ```java
@@ -59,6 +78,7 @@ public class Pedido {
 ```
 
 ### Estados Concretos
+
 Implementam comportamentos para cada estado do pedido.
 
 ```java
@@ -115,6 +135,7 @@ public class EstadoCancelado implements EstadoPedido {
 ```
 
 ### Uso
+
 Demonstra a mudança de comportamento do pedido com base em seu estado.
 
 ```java
@@ -127,3 +148,4 @@ public class Main {
         pedido.cancelar(); // Não permitido: enviado
 
         var pedido2
+```

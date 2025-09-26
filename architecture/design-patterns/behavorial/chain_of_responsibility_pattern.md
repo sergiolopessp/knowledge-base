@@ -2,28 +2,46 @@
 
 O Padrão Chain of Responsibility permite que uma solicitação seja passada por uma cadeia de manipuladores, onde cada manipulador decide processá-la ou passá-la ao próximo. É útil para evitar acoplamento entre remetente e receptor.
 
+## Sumário
+
+- [Padrão Chain of Responsibility](#padrão-chain-of-responsibility)
+- [Componentes Principais](#componentes-principais)
+- [Benefícios](#benefícios)
+- [Contras](#contras)
+- [Quando Usar](#quando-usar)
+- [Exemplo em Java 21](#exemplo-em-java-21)
+  - [Manipulador](#manipulador)
+  - [Pedido](#pedido)
+  - [Manipuladores Concretos](#manipuladores-concretos)
+  - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Manipulador**: Interface ou classe abstrata que define o método de manipulação e a referência ao próximo manipulador.
 - **Manipuladores Concretos**: Classes que implementam a lógica de manipulação.
 - **Cliente**: Inicia a solicitação e a envia à cadeia.
 
 ## Benefícios
+
 - Desacopla remetente e receptor.
 - Permite adicionar ou remover manipuladores dinamicamente.
 - Flexível para ordenar ou combinar responsabilidades.
 - Promove o princípio da responsabilidade única.
 
 ## Contras
+
 - Pode resultar em solicitações não tratadas se a cadeia não for configurada corretamente.
 - Aumenta complexidade com muitos manipuladores.
 - Pode impactar desempenho em cadeias longas.
 
 ## Quando Usar
+
 Use o padrão Chain of Responsibility quando você, como desenvolvedor, precisa processar uma solicitação em várias etapas em um sistema, como em um e-commerce para validar um pedido (ex.: verificar estoque, validar pagamento, confirmar entrega). Cada etapa pode ser tratada por um manipulador, e a solicitação passa pela cadeia até ser completamente processada.
 
 ## Exemplo em Java 21
 
 ### Manipulador
+
 Define a interface para manipular solicitações de pedidos.
 
 ```java
@@ -34,6 +52,7 @@ public interface ManipuladorPedido {
 ```
 
 ### Pedido
+
 Representa a solicitação a ser processada.
 
 ```java
@@ -41,6 +60,7 @@ public record Pedido(String produto, int quantidade, double valor) {}
 ```
 
 ### Manipuladores Concretos
+
 Cada manipulador verifica uma condição específica e passa a solicitação ao próximo, se necessário.
 
 ```java
@@ -99,6 +119,7 @@ public class ConfirmadorEntrega implements ManipuladorPedido {
 ```
 
 ### Uso
+
 Demonstra a configuração da cadeia e o processamento de um pedido.
 
 ```java

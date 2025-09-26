@@ -2,29 +2,47 @@
 
 O Padrão Proxy atua como um intermediário para outro objeto, controlando acesso, adicionando funcionalidades ou otimizando interações, sem alterar a interface original.
 
+## Sumário
+
+- [Padrão Proxy](#padrão-proxy)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Subject](#subject)
+    - [Objeto Real](#objeto-real)
+    - [Proxy](#proxy)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Subject**: Interface que define o contrato para o proxy e o objeto real.
 - **Objeto Real**: Classe que implementa a funcionalidade principal.
 - **Proxy**: Classe que implementa a interface Subject, controlando acesso ao objeto real.
 - **Cliente**: Interage com o proxy como se fosse o objeto real.
 
 ## Benefícios
+
 - Controla acesso ao objeto real (ex.: segurança, lazy loading).
 - Permite adicionar funcionalidades (ex.: logging, caching).
 - Reduz custo de operações pesadas.
 - Mantém a interface original.
 
 ## Contras
+
 - Adiciona uma camada extra, aumentando complexidade.
 - Pode introduzir latência em chamadas.
 - Requer manutenção para sincronizar com o objeto real.
 
 ## Quando Usar
+
 Use o padrão Proxy quando você, como desenvolvedor, precisa controlar ou otimizar o acesso a um recurso caro em um sistema, como em um e-commerce para gerenciar o carregamento de imagens de produtos sob demanda (lazy loading) ou adicionar autenticação antes de acessar um serviço de pagamento.
 
 ## Exemplo em Java 21
 
 ### Subject
+
 Define o contrato para carregar e exibir imagens.
 
 ```java
@@ -34,6 +52,7 @@ public interface Imagem {
 ```
 
 ### Objeto Real
+
 Classe que carrega uma imagem do disco, operação potencialmente custosa.
 
 ```java
@@ -57,6 +76,7 @@ public class ImagemReal implements Imagem {
 ```
 
 ### Proxy
+
 Controla o acesso à `ImagemReal`, implementando lazy loading.
 
 ```java
@@ -79,6 +99,7 @@ public class ProxyImagem implements Imagem {
 ```
 
 ### Uso
+
 Demonstra o uso do proxy para carregar imagens sob demanda.
 
 ```java

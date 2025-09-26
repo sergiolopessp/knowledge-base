@@ -2,29 +2,48 @@
 
 O Padrão Bridge desacopla uma abstração de sua implementação, permitindo que ambas variem independentemente. É útil para evitar explosão de classes em hierarquias complexas.
 
+## Sumário
+
+- [Padrão Bridge](#padrão-bridge)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Implementador](#implementador)
+    - [Implementações Concretas](#implementações-concretas)
+    - [Abstração](#abstração)
+    - [Abstração Refinada](#abstração-refinada)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Abstração**: Define a interface de alto nível para o cliente.
 - **Abstração Refinada**: Estende a abstração com funcionalidades específicas.
 - **Implementador**: Interface para a implementação concreta.
 - **Implementações Concretas**: Classes que implementam a interface do implementador.
 
 ## Benefícios
+
 - Separa abstração da implementação, permitindo mudanças independentes.
 - Reduz acoplamento entre componentes.
 - Facilita adição de novas abstrações ou implementações.
 - Evita explosão de classes em hierarquias.
 
 ## Contras
+
 - Aumenta complexidade com classes adicionais.
 - Pode ser desnecessário para sistemas simples.
 - Requer planejamento para definir interfaces corretamente.
 
 ## Quando Usar
+
 Use o padrão Bridge quando você, como desenvolvedor, precisa separar a lógica de alto nível da implementação em um sistema, como em um e-commerce onde diferentes tipos de carrinhos de compras (ex.: padrão, premium) podem usar diferentes métodos de armazenamento (ex.: banco de dados, cache). Isso permite adicionar novos carrinhos ou métodos de armazenamento sem modificar as classes existentes.
 
 ## Exemplo em Java 21
 
 ### Implementador
+
 Define a interface para os métodos de armazenamento.
 
 ```java
@@ -34,6 +53,7 @@ public interface Armazenamento {
 ```
 
 ### Implementações Concretas
+
 Implementações específicas para diferentes métodos de armazenamento.
 
 ```java
@@ -53,6 +73,7 @@ public class ArmazenamentoCache implements Armazenamento {
 ```
 
 ### Abstração
+
 Define a interface de alto nível para o carrinho de compras.
 
 ```java
@@ -68,6 +89,7 @@ public abstract class CarrinhoCompras {
 ```
 
 ### Abstração Refinada
+
 Estende a abstração para tipos específicos de carrinhos.
 
 ```java
@@ -95,6 +117,7 @@ public class CarrinhoPremium extends CarrinhoCompras {
 ```
 
 ### Uso
+
 Demonstra como diferentes carrinhos usam diferentes métodos de armazenamento.
 
 ```java

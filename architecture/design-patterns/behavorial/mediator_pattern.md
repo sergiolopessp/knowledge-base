@@ -2,29 +2,47 @@
 
 O Padrão Mediator promove o desacoplamento entre objetos, centralizando a comunicação em um mediador que gerencia interações entre componentes, evitando acoplamento direto.
 
+## Sumário
+
+- [Padrão Mediator](#padrão-mediator)
+- [Componentes Principais](#componentes-principais)
+- [Benefícios](#benefícios)
+- [Contras](#contras)
+- [Quando Usar](#quando-usar)
+- [Exemplo em Java 21](#exemplo-em-java-21)
+  - [Mediator](#mediator)
+  - [Mediator Concreto](#mediator-concreto)
+  - [Colaboradores](#colaboradores)
+  - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Mediator**: Interface ou classe abstrata que define métodos para comunicação.
 - **Mediator Concreto**: Implementa a lógica de coordenação entre componentes.
 - **Colaborador**: Classes que interagem por meio do mediador.
 - **Cliente**: Configura o mediador e os colaboradores.
 
 ## Benefícios
+
 - Reduz acoplamento entre componentes.
 - Centraliza a lógica de comunicação.
 - Facilita manutenção e adição de novos componentes.
 - Simplifica interações complexas.
 
 ## Contras
+
 - O mediador pode se tornar excessivamente complexo.
 - Introduz um ponto único de falha.
 - Pode impactar desempenho em sistemas grandes.
 
 ## Quando Usar
+
 Use o padrão Mediator quando você, como desenvolvedor, precisa gerenciar interações complexas entre múltiplos objetos em um sistema, como em um e-commerce onde componentes como carrinho, estoque e pagamento precisam se comunicar. Por exemplo, ao atualizar o estoque quando um item é adicionado ao carrinho, o mediador coordena as ações sem que os componentes se comuniquem diretamente.
 
 ## Exemplo em Java 21
 
 ### Mediator
+
 Define a interface para comunicação entre colaboradores.
 
 ```java
@@ -34,6 +52,7 @@ public interface MediatorLoja {
 ```
 
 ### Mediator Concreto
+
 Coordena as interações entre carrinho, estoque e pagamento.
 
 ```java
@@ -65,6 +84,7 @@ public class MediatorLojaConcreto implements MediatorLoja {
 ```
 
 ### Colaboradores
+
 Classes que interagem por meio do mediador.
 
 ```java
@@ -113,6 +133,7 @@ public class Pagamento {
 ```
 
 ### Uso
+
 Demonstra como o mediador coordena a adição de um item ao carrinho.
 
 ```java

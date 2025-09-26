@@ -2,6 +2,18 @@
 
 O Padrão Prototype permite criar novos objetos copiando instâncias existentes (protótipos), evitando a criação de objetos do zero e reduzindo custos computacionais.
 
+## Sumário
+
+- [Componentes Principais](#componentes-principais)
+- [Benefícios](#benefícios)
+- [Contras](#contras)
+- [Quando Usar](#quando-usar)
+- [Exemplo em Java 21](#exemplo-em-java-21)
+  - [Prototype](#prototype)
+  - [Prototype Concreto](#prototype-concreto)
+  - [Uso](#uso)
+
+
 ## Componentes Principais
 - **Prototype**: Interface ou classe abstrata que define o método de clonagem.
 - **Prototype Concreto**: Implementa a clonagem e contém o estado a ser copiado.
