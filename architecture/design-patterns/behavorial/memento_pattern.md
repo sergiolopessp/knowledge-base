@@ -2,28 +2,45 @@
 
 O Padrão Memento captura e externaliza o estado interno de um objeto sem violar seu encapsulamento, permitindo restaurá-lo posteriormente. É útil para implementar funcionalidades de "desfazer".
 
+## Sumário
+
+- [Padrão Memento](#padrão-memento)
+- [Componentes Principais](#componentes-principais)
+- [Benefícios](#benefícios)
+- [Contras](#contras)
+- [Quando Usar](#quando-usar)
+- [Exemplo em Java 21](#exemplo-em-java-21)
+  - [Memento](#memento)
+  - [Originador](#originador)
+-
+
 ## Componentes Principais
+
 - **Originador**: Classe que cria e restaura seu estado a partir de um memento.
 - **Memento**: Objeto que armazena o estado do originador.
 - **Cuidador**: Gerencia os mementos, sem acessar seu conteúdo.
 
 ## Benefícios
+
 - Preserva o encapsulamento do estado.
 - Facilita a implementação de desfazer/restaurar.
 - Permite salvar múltiplos estados.
 - Simplifica o gerenciamento de histórico.
 
 ## Contras
+
 - Pode aumentar o consumo de memória com muitos mementos.
 - Adiciona complexidade ao design.
 - Requer cuidado em sistemas concorrentes.
 
 ## Quando Usar
+
 Use o padrão Memento quando você, como desenvolvedor, precisa implementar funcionalidades de desfazer em um sistema, como em um e-commerce onde o usuário pode reverter alterações no carrinho de compras (ex.: remover um item e depois restaurá-lo). É ideal para salvar e restaurar estados sem expor a estrutura interna do objeto.
 
 ## Exemplo em Java 21
 
 ### Memento
+
 Armazena o estado do carrinho.
 
 ```java
@@ -31,6 +48,7 @@ public record MementoCarrinho(String produto, int quantidade) {}
 ```
 
 ### Originador
+
 Classe que gerencia o estado do carrinho e cria/restaura mementos.
 
 ```java
@@ -57,6 +75,7 @@ public class Carrinho {
 ```
 
 ### Cuidador
+
 Gerencia a lista de mementos para desfazer alterações.
 
 ```java
@@ -79,6 +98,7 @@ public class CuidadorCarrinho {
 ```
 
 ### Uso
+
 Demonstra a adição de itens ao carrinho, salvamento do estado e restauração.
 
 ```java

@@ -2,29 +2,47 @@
 
 O Padrão Flyweight reduz o uso de memória ao compartilhar objetos com estado comum (intrínseco), mantendo estados específicos (extrínsecos) separados. É ideal para gerenciar muitos objetos semelhantes.
 
+## Sumário
+
+- [Padrão Flyweight](#padrão-flyweight)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Flyweight](#flyweight)
+    - [Flyweight Concreto](#flyweight-concreto)
+    - [Fábrica Flyweight](#fábrica-flyweight)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Flyweight**: Interface ou classe abstrata que define operações.
 - **Flyweight Concreto**: Implementa o flyweight com estado intrínseco.
 - **Fábrica Flyweight**: Gerencia a criação e compartilhamento de flyweights.
 - **Cliente**: Mantém o estado extrínseco e usa flyweights.
 
 ## Benefícios
+
 - Reduz consumo de memória ao compartilhar objetos.
 - Melhora desempenho em sistemas com muitos objetos semelhantes.
 - Permite escalabilidade em aplicações com dados repetitivos.
 - Separa estados intrínsecos e extrínsecos.
 
 ## Contras
+
 - Pode aumentar complexidade do design.
 - Gerenciamento de estado extrínseco pode ser complicado.
 - Requer cuidado em sistemas multithread.
 
 ## Quando Usar
+
 Use o padrão Flyweight quando você, como desenvolvedor, precisa gerenciar muitos objetos com características compartilhadas em um sistema, como em um e-commerce para representar produtos com atributos comuns (ex.: nome, preço) que se repetem, enquanto estados específicos (ex.: quantidade no carrinho) são mantidos separadamente.
 
 ## Exemplo em Java 21
 
 ### Flyweight
+
 Define a interface para produtos com estado intrínseco.
 
 ```java
@@ -34,6 +52,7 @@ public interface ProdutoFlyweight {
 ```
 
 ### Flyweight Concreto
+
 Armazena o estado intrínseco (nome, preço) e usa o estado extrínseco (quantidade).
 
 ```java
@@ -46,6 +65,7 @@ public record ProdutoConcreto(String nome, double preco) implements ProdutoFlywe
 ```
 
 ### Fábrica Flyweight
+
 Gerencia a criação e compartilhamento de flyweights.
 
 ```java
@@ -63,6 +83,7 @@ public class FabricaProduto {
 ```
 
 ### Uso
+
 Demonstra o compartilhamento de flyweights para produtos com estados extrínsecos diferentes.
 
 ```java

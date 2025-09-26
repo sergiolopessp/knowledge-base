@@ -2,29 +2,47 @@
 
 O Padrão Composite permite tratar objetos individuais e composições de objetos de forma uniforme, organizando-os em uma estrutura hierárquica de árvore.
 
+## Sumário
+
+- [Padrão Composite](#padrão-composite)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Componente](#componente)
+    - [Folha (Leaf)](#folha-leaf)
+    - [Composto (Composite)](#composto-composite)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Componente**: Interface ou classe abstrata que define operações comuns.
 - **Folha (Leaf)**: Classe que representa objetos individuais sem filhos.
 - **Composto (Composite)**: Classe que contém outros componentes (folhas ou outros compostos).
 - **Cliente**: Interage com componentes através da interface comum.
 
 ## Benefícios
+
 - Permite tratar objetos individuais e grupos uniformemente.
 - Facilita a manipulação de estruturas hierárquicas.
 - Simplifica adição de novos tipos de componentes.
 - Promove flexibilidade na construção de árvores.
 
 ## Contras
+
 - Pode tornar o design mais complexo.
 - Difícil restringir componentes em certos níveis da hierarquia.
 - Pode impactar desempenho em árvores grandes.
 
 ## Quando Usar
+
 Use o padrão Composite quando você, como desenvolvedor, precisa representar hierarquias em um sistema, como uma estrutura de categorias de produtos em um e-commerce. Por exemplo, ao modelar uma árvore de categorias (ex.: Eletrônicos > Computadores > Notebooks), onde tanto categorias quanto produtos individuais podem ser tratados de forma uniforme.
 
 ## Exemplo em Java 21
 
 ### Componente
+
 Define a interface para categorias e produtos.
 
 ```java
@@ -35,6 +53,7 @@ public interface ItemCatalogo {
 ```
 
 ### Folha (Leaf)
+
 Representa um produto individual.
 
 ```java
@@ -52,6 +71,7 @@ public record Produto(String nome, double preco) implements ItemCatalogo {
 ```
 
 ### Composto (Composite)
+
 Representa uma categoria que pode conter outros itens (produtos ou subcategorias).
 
 ```java
@@ -90,6 +110,7 @@ public class Categoria implements ItemCatalogo {
 ```
 
 ### Uso
+
 Demonstra a criação de uma hierarquia de categorias e produtos, com exibição e cálculo de preço total.
 
 ```java

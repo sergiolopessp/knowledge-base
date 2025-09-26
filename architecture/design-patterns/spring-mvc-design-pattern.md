@@ -13,7 +13,6 @@ Este documento explica o padrão de projeto **Model‑View‑Controller** (MVC) 
 - [Boas Práticas](#boas-práticas)  
 - [Resumo](#resumo)  
 
----
 
 ## O que é MVC
 
