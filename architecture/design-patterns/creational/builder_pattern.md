@@ -2,29 +2,45 @@
 
 O Padrão Builder separa a construção de um objeto complexo de sua representação, permitindo criar diferentes configurações do mesmo objeto de forma controlada e legível.
 
+## Sumário
+
+- [Padrão Builder](#padrão-builder)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21 com Lombok](#exemplo-em-java-21-com-lombok)
+    - [Produto](#produto)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Produto**: Objeto complexo a ser construído.
 - **Builder**: Interface ou classe abstrata que define os passos de construção.
 - **Concrete Builder**: Implementa os passos de construção.
 - **Diretor**: Opcional, orquestra a construção usando o builder.
 
 ## Benefícios
+
 - Permite construção passo a passo de objetos complexos.
 - Facilita a criação de diferentes configurações.
 - Melhora a legibilidade e manutenção do código.
 - Encapsula a lógica de construção.
 
 ## Contras
+
 - Aumenta o número de classes.
 - Pode ser desnecessário para objetos simples.
 - Requer manutenção adicional para novos atributos.
 
 ## Quando Usar
+
 Use o padrão Builder quando você, como desenvolvedor, precisa criar um objeto com muitos atributos opcionais em um sistema de e-commerce. Por exemplo, ao modelar um pedido com campos como cliente, produto, quantidade, preço e endereço de entrega, onde nem todos são obrigatórios. O Builder permite configurar apenas os campos necessários de forma clara, evitando construtores sobrecarregados ou setters repetitivos, especialmente ao lidar com diferentes tipos de pedidos (ex.: com ou sem entrega expressa).
 
 ## Exemplo em Java 21 com Lombok
 
 ### Produto
+
 Representa o objeto complexo, um pedido com vários atributos, usando anotações do Lombok para reduzir boilerplate.
 
 ```java
@@ -45,6 +61,7 @@ public class Pedido {
 ```
 
 ### Uso
+
 Demonstra a construção de um pedido configurando atributos individualmente, usando o builder gerado automaticamente pelo Lombok.
 
 ```java

@@ -2,28 +2,45 @@
 
 O Padrão Facade fornece uma interface simplificada para um conjunto complexo de classes ou subsistemas, facilitando o uso por clientes.
 
+## Sumário
+
+- [Padrão Facade](#padrão-facade)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Subsistema](#subsistema)
+    - [Facade](#facade)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Facade**: Classe que oferece uma interface simplificada para interagir com o subsistema.
 - **Subsistema**: Conjunto de classes com funcionalidades complexas que a facade encapsula.
 - **Cliente**: Usa a facade para acessar o subsistema.
 
 ## Benefícios
+
 - Simplifica a interação com sistemas complexos.
 - Reduz acoplamento entre cliente e subsistema.
 - Melhora a legibilidade e usabilidade do código.
 - Facilita manutenção ao centralizar acesso.
 
 ## Contras
+
 - Pode limitar flexibilidade ao esconder detalhes do subsistema.
 - Risco de se tornar uma fachada excessivamente grande.
 - Adiciona uma camada extra ao design.
 
 ## Quando Usar
+
 Use o padrão Facade quando você, como desenvolvedor, precisa simplificar a interação com um sistema complexo, como em um e-commerce onde o cliente realiza um pedido envolvendo múltiplos subsistemas (estoque, pagamento, entrega). A facade oferece uma única interface para coordenar essas operações, escondendo a complexidade.
 
 ## Exemplo em Java 21
 
 ### Subsistema
+
 Classes que representam subsistemas complexos.
 
 ```java
@@ -48,6 +65,7 @@ public class Entrega {
 ```
 
 ### Facade
+
 Fornece uma interface simplificada para realizar um pedido.
 
 ```java
@@ -75,6 +93,7 @@ public class FacadeLoja {
 ```
 
 ### Uso
+
 Demonstra como o cliente usa a facade para realizar um pedido sem interagir diretamente com os subsistemas.
 
 ```java

@@ -2,29 +2,48 @@
 
 O Padrão Abstract Factory fornece uma interface para criar famílias de objetos relacionados ou dependentes sem especificar suas classes concretas. É útil para criar objetos compatíveis entre si.
 
+## Sumário
+
+- [Padrão Abstract Factory](#padrão-abstract-factory)
+  - [Componentes Principais](#componentes-principais)
+  - [Benefícios](#benefícios)
+  - [Contras](#contras)
+  - [Quando Usar](#quando-usar)
+  - [Exemplo em Java 21](#exemplo-em-java-21)
+    - [Produtos Abstratos](#produtos-abstratos)
+    - [Produtos Concretos](#produtos-concretos)
+    - [Fábrica Abstrata](#fábrica-abstrata)
+    - [Fábricas Concretas](#fábricas-concretas)
+    - [Uso](#uso)
+
 ## Componentes Principais
+
 - **Fábrica Abstrata**: Interface ou classe abstrata que define métodos para criar produtos.
 - **Fábricas Concretas**: Implementam os métodos de criação para uma família específica.
 - **Produtos Abstratos**: Interfaces para os tipos de objetos criados.
 - **Produtos Concretos**: Implementações específicas dos produtos.
 
 ## Benefícios
+
 - Garante compatibilidade entre objetos de uma mesma família.
 - Reduz acoplamento entre cliente e classes concretas.
 - Facilita a troca de famílias de produtos.
 - Promove consistência na criação.
 
 ## Contras
+
 - Aumenta o número de classes.
 - Pode ser complexo para sistemas simples.
 - Requer manutenção para novas famílias ou produtos.
 
 ## Quando Usar
+
 Use o padrão Abstract Factory quando você, como desenvolvedor, precisa criar famílias de objetos relacionados em um sistema, como interfaces de usuário (UI) para diferentes plataformas (web, mobile) em um e-commerce. Por exemplo, ao criar botões e caixas de texto que devem ser consistentes dentro de uma plataforma, mas variar entre plataformas.
 
 ## Exemplo em Java 21
 
 ### Produtos Abstratos
+
 Definem contratos para componentes de UI.
 
 ```java
@@ -38,6 +57,7 @@ public interface CaixaTexto {
 ```
 
 ### Produtos Concretos
+
 Implementações específicas para cada plataforma.
 
 ```java
@@ -71,6 +91,7 @@ public record CaixaTextoMobile(String placeholder) implements CaixaTexto {
 ```
 
 ### Fábrica Abstrata
+
 Define métodos para criar uma família de componentes de UI.
 
 ```java
@@ -81,6 +102,7 @@ public interface FabricaUI {
 ```
 
 ### Fábricas Concretas
+
 Implementam a criação de componentes para uma plataforma específica.
 
 ```java
@@ -110,6 +132,7 @@ public class FabricaUIMobile implements FabricaUI {
 ```
 
 ### Uso
+
 Demonstra a criação de componentes de UI para diferentes plataformas usando fábricas concretas.
 
 ```java
