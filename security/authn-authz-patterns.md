@@ -80,8 +80,41 @@ Cuidado com o Payload do JWT: O JWT é apenas codificado em Base64, não criptog
 
 Gerenciamento de Segredos: Em ambientes Docker/Kubernetes, injete as chaves de assinatura de tokens (Secret Keys) via Secrets ou Vault, nunca hardcoded no código.
 
+## 5. Fundamentos de Tokens e Segurança de Armazenamento
 
-## 5. Referências
+Para implementar padrões de Autenticação e Autorização de forma segura, é crucial distinguir o propósito de cada token e como protegê-los no client-side.
+
+### 5.1 Anatomia dos Tokens (ID vs Access vs Refresh)
+
+| Token | Propósito | Destinatário | Tempo de Vida |
+| :--- | :--- | :--- | :--- |
+| **ID Token** | Identidade. Diz "quem" o usuário é (claims: nome, email). | Frontend | Curto |
+| **Access Token** | Autorização. Diz "o que" o usuário pode acessar na API. | API Resource | Curto (5-15 min) |
+| **Refresh Token** | Renovação. Usado para obter novos Access Tokens sem re-login. | IdP (Auth Server) | Longo (dias/mesas) |
+
+### 5.2 Onde Armazenar? (A Armadilha do LocalStorage)
+
+O armazenamento de tokens no navegador é um dos pontos mais críticos em arquiteturas modernas:
+
+* **LocalStorage / SessionStorage**: ❌ **Não utilizar para tokens sensíveis.** São vulneráveis a ataques **XSS (Cross-Site Scripting)**. Qualquer script de terceiros injetado na página pode ler esses tokens e exfiltrá-los.
+* **Memória (Variáveis JS)**: ✅ Recomendado para **Access e ID Tokens**. Embora o token seja perdido ao atualizar a página (refresh), isso limita a janela de exposição. O estado pode ser recuperado silenciosamente via Refresh Token.
+* **HttpOnly, Secure Cookies**: ✅ Mandatório para **Refresh Tokens**. 
+    * `HttpOnly`: Impede que o JavaScript acesse o cookie (protege contra XSS).
+    * `Secure`: Garante que o cookie só trafegue via HTTPS.
+    * `SameSite=Strict/Lax`: Protege contra ataques CSRF.
+
+### 5.3 Estratégia de Renovação (Silent Refresh)
+
+Para manter uma boa UX sem comprometer a segurança:
+1. O **Access Token** expira rapidamente.
+2. O Frontend detecta o erro 401 ou monitora o `exp` do token.
+3. Uma chamada de background é feita para o endpoint de `/refresh`, enviando o **Refresh Token** (armazenado no Cookie seguro).
+4. O servidor de autenticação valida o cookie e entrega um novo Access Token em memória para o frontend.
+
+> **Insight de Arquitetura Cloud Native**: Para aplicações SPA críticas, considere o padrão **BFF (Backend for Frontend)**. Nele, os tokens nunca chegam ao navegador, o BFF gerencia a sessão via cookies criptografados e atua como um proxy seguro para as APIs de backend (Java/Go/Spring), simplificando a segurança no frontend.
+
+
+## 6. Referências
 
 [RFC 7519 - JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519)
 
