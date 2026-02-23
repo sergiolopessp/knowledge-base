@@ -11,6 +11,7 @@ Este guia aborda boas práticas, conceitos e exemplos para lidar com exceções 
 - [Sintomas Comuns & Diagnóstico](#sintomas-comuns--diagnóstico)  
 - [Ferramentas de Logging e Debug](#ferramentas-de-logging-e-debug)  
 - [Tratamento Centralizado de Exceções (Spring Boot)](#tratamento-centralizado-de-exceções-spring-boot)  
+- [Java Lambdas e o Tratamento de Exceções](#java-lambdas-e-o-tratamento-de-exceções)   
 - [Boas Práticas](#boas-práticas)  
 - [Resumo](#resumo)  
 
@@ -86,6 +87,64 @@ public class GlobalExceptionHandler {
 ```
 
 ---
+
+## Java Lambdas e o Tratamento de Exceções
+Trabalhar com expressões Lambda em Java simplifica a sintaxe, mas introduz um desafio: as interfaces funcionais da JDK não declaram exceções verificadas (checked exceptions). Isso impede o lançamento direto de exceções como IOException ou SQLException dentro de um Stream, por exemplo.
+
+Interfaces como java.util.function.Function definem o método R apply(T t), sem a cláusula throws. Se o código dentro da Lambda lançar uma checked exception, o compilador exigirá o tratamento imediato ou uma mudança na estratégia.
+
+**Estratégias de Implementação**
+1. Wrapper Methods (Abordagem Centralizada)
+Esta é a forma mais limpa de lidar com o problema, encapsulando a lógica de tratamento em um método utilitário que converte a exceção verificada em uma não verificada (RuntimeException).
+
+```Java
+public class LambdaWrapper {
+    public static <T, R> Function<T, R> wrap(CheckedFunction<T, R, Exception> checkedFunction) {
+        return t -> {
+            try {
+                return checkedFunction.apply(t);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        };
+    }
+}
+
+@FunctionalInterface
+public interface CheckedFunction<T, R, E extends Exception> {
+    R apply(T t) throws E;
+}
+
+// Uso prático:
+list.stream()
+    .map(LambdaWrapper.wrap(path -> Files.readAllLines(path)))
+    .collect(Collectors.toList());
+```
+
+2. Tratamento Local (Try-Catch Inline)
+Útil para casos simples onde o erro deve ser logado e o fluxo deve continuar, ou quando um valor padrão (fallback) é aceitável. 
+
+```Java
+list.forEach(item -> {
+    try {
+        processItem(item);
+    } catch (IOException e) {
+        logger.error("Erro ao processar item: " + item, e);
+        // Tratamento local ou skip
+    }
+});
+```
+3. Interfaces Funcionais Customizadas
+Em arquiteturas de domínio fechado, pode-se definir interfaces que já suportam exceções específicas, evitando o uso de interfaces genéricas da JDK.
+
+**Lições Aprendidas**
+
+Separação de Preocupações: Mantenha a lógica de tratamento de erro fora da linha principal do Stream. Lambdas devem ser concisas, se o try-catch ocupar muitas linhas, extraia-o para um método.
+
+RuntimeException vs. Checked: Ao usar wrappers, lembre-se de que converter para RuntimeException pode dificultar o tratamento específico por quem chama o método. Considere criar exceções de domínio (ex: PaymentException).
+
+Legibilidade: No contexto de engenharia de software de longo prazo, a legibilidade supera a brevidade. Se uma Lambda se tornar complexa devido ao tratamento de erros, considere voltar ao loop for tradicional ou usar métodos de referência.
+
 
 ## Boas Práticas
 
